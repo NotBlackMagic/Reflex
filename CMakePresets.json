@@ -1,0 +1,47 @@
+{
+	"version": 3,
+	"configurePresets": [
+		{
+			"name": "default",
+			"hidden": true,
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/build/${presetName}",
+			"toolchainFile": "${sourceDir}/cmake/gcc-arm-none-eabi.cmake",
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+			}
+		},
+		{
+			"name": "Debug",
+			"inherits": "default",
+			"displayName": "Config: Debug",
+			"description": "Debug build with symbols",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "Release",
+			"inherits": "default",
+			"displayName": "Config: Release",
+			"description": "Optimized release build",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "Build-Reflex-Debug",
+			"displayName": "Build: Reflex (Debug)",
+			"configurePreset": "Debug",
+			"targets": ["Reflex"]
+		},
+		{
+			"name": "Build-Reflex-Release",
+			"displayName": "Build: Reflex (Release)",
+			"configurePreset": "Release",
+			"targets": ["Reflex"]
+		}
+	]
+}
